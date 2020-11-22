@@ -6,6 +6,15 @@ Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    data.table (>= 1.13.0),
+    ggplot2 (>= 3.3.2),
+    expm (>= 0.999.5)
+Suggests: 
+    testthat (>= 2.3.2),
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

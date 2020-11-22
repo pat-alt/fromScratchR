@@ -1,0 +1,43 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# fromScratchR
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+[fromScratchR](https://github.com/pat-alt/fromScratchR) is the accompanying package of [fromScratch](https://github.com/pat-alt/fromScratch) - a book that collects ideas, notes, exercises and code that students of the MSc in Data Science at Barcelona GSE were exposed and/or came up with during their studies. Both the book and this package are meant for educational purposes and cover a broad range of topics. The package primarily serves the purpose of making it easier for readers of the book to engage with relevant R code. Most if not all functions implemented in this package have already been implemented in established packages. Coding them up *from scratch* is an educational exercise for the authors and hopefully interacting with the code is beneficial to readers.  
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("pat-alt/fromScratchR")
+```
+## Example
+
+Below is a simple example of a function from the book. `rorthogonal` generates a random orthogonal matrix through singular value decomposition. 
+
+```{r example}
+library(fromScratchR)
+## basic example code
+X <- rorthogonal(n=100,5)
+crossprod(X)
+```
+
+
