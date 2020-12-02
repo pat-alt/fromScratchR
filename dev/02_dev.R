@@ -7,6 +7,9 @@ usethis::use_package("ggplot2", min_version = T)
 usethis::use_package("expm", min_version = T)
 usethis::use_package("testthat", "Suggests", min_version = T)
 
+# Functions ----
+golem::add_utils("complete_dt")
+
 ## Tests ----
 ## Add one line by test you want to create
 # usethis::use_test( "compute_J" )
