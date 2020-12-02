@@ -1,11 +1,10 @@
 Package: fromScratchR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Accompanying package of "From Scratch" book.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Patrick Altmeyer
+Maintainer: The package maintainer <patrick.altmeyer@barcelonagse.eu>
+Description: [fromScratchR](https://github.com/pat-alt/fromScratchR) is the accompanying package of [fromScratch](https://github.com/pat-alt/fromScratch) - a book that collects ideas, notes, exercises and code that students of the MSc in Data Science at Barcelona GSE were exposed and/or came up with during their studies. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

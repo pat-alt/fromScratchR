@@ -29,6 +29,7 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("pat-alt/fromScratchR")
 ```
+
 ## Example
 
 Below is a simple example of a function from the book. `rorthogonal` generates a random orthogonal matrix through singular value decomposition. 
