@@ -60,7 +60,7 @@ gradient_desc = function(
     alpha = step_size0 # initialize step size
     df_k = matrix(df(X_latest))
     B_k = B(X_latest)
-    p_k = solve(-B_k,df_k) # p_k = - (solve(B_k) %*% df_k)
+    p_k = qr.solve(-B_k,df_k)
     # Backtracking:
     while (!sufficient_decrease(alpha)) {
       alpha = alpha/2

@@ -1,4 +1,4 @@
-sim_undersampling <- function(vars, subsample_estimator, J=1000, ...) {
+run_undersampling <- function(vars, subsample_estimator, J=1000, ...) {
   # Compute full sample logit estimator:
   p_y_hat <- glm(vars$y~vars$X,family = "binomial")$fitted.values
   # Compute J predictions from subsample estimator:
@@ -13,7 +13,7 @@ sim_undersampling <- function(vars, subsample_estimator, J=1000, ...) {
               return(list(fitted=NA))
             }
           )
-          data.table(
+          data.table::data.table(
             p_y_hat  = c(p_y_hat),
             p_y_hat_subsample = estimate$fitted,
             i = 1:length(p_y_hat),
@@ -28,16 +28,16 @@ sim_undersampling <- function(vars, subsample_estimator, J=1000, ...) {
     V <- output[,.(V_b=(1/n)*norm(as.matrix(p_y_hat_subsample - avg_y_hat_subsample), type="f")^2),by=.(j)][,mean(V_b)]
     bias_sq <- output[,.(avg_bias_i = mean(p_y_hat - p_y_hat_subsample)), by=.(i)][,(1/n)*norm(as.matrix(avg_bias_i, type="f")^2)]
     mse_check <- output[,.(mse_b=(1/n)*norm(as.matrix(p_y_hat - p_y_hat_subsample), type="f")^2),by=.(j)][,mean(mse_b)]
-    mse <- V + bias_sq 
+    mse <- V + bias_sq
     if (abs(mse_check-mse)>1e-5) {
       warning(
         sprintf(
-          'Inconsistent values for MSE and MSE from decomposition: %0.5f', 
+          'Inconsistent values for MSE and MSE from decomposition: %0.5f',
           mse_check-mse
         )
       )
     }
-    output <- data.table(
+    output <- data.table::data.table(
       value = c(V,bias_sq,mse),
       variables = c("V", "Squared bias", "MSE")
     )
@@ -47,7 +47,7 @@ sim_undersampling <- function(vars, subsample_estimator, J=1000, ...) {
     run_J_predictions(),
     error=function(e) {
       warning("Error occured. Returning NaNs.")
-      output <- data.table(
+      output <- data.table::data.table(
         value = rep(NA, 3),
         variables = c("V", "Squared bias", "MSE")
       )

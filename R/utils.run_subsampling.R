@@ -1,4 +1,4 @@
-sim_subsampling <- function(Phi, y, m, subsample_estimator, J=1000, bias_correct=F, B=1000, ...) {
+run_subsampling <- function(Phi, y, m, subsample_estimator, J=1000, bias_correct=F, B=1000, ...) {
   # Compute full sample OLS estimator:
   y_hat_ols <- qr.fitted(qr.default(Phi),y)
   # Compute J predictions from subsample estimator:
@@ -13,13 +13,13 @@ sim_subsampling <- function(Phi, y, m, subsample_estimator, J=1000, bias_correct
               return(list(fitted=NA))
             }
           )
-          if (bias_correct) { 
+          if (bias_correct) {
             # Bootstrap bias-correction term:
             w <- 0
           } else {
             w <- 0
           }
-          data.table(
+          data.table::data.table(
             y_hat_ols = c(y_hat_ols),
             y_hat_subsample = estimate$fitted,
             i = 1:length(y_hat_ols),
@@ -39,12 +39,12 @@ sim_subsampling <- function(Phi, y, m, subsample_estimator, J=1000, bias_correct
     if (abs(mse_check-mse)>1e-5) {
       warning(
         sprintf(
-          'Inconsistent values for MSE and MSE from decomposition: %0.5f', 
+          'Inconsistent values for MSE and MSE from decomposition: %0.5f',
           mse_check-mse
         )
       )
     }
-    output <- data.table(
+    output <- data.table::data.table(
       value = c(V,bias_sq,mse),
       variables = c("V", "Squared bias", "MSE")
     )
@@ -54,7 +54,7 @@ sim_subsampling <- function(Phi, y, m, subsample_estimator, J=1000, bias_correct
     run_J_predictions(),
     error=function(e) {
       warning("Error occured. Returning NaNs.")
-      output <- data.table(
+      output <- data.table::data.table(
         value = rep(NA, 3),
         variables = c("V", "Squared bias", "MSE")
       )
